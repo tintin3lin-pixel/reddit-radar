@@ -66,26 +66,6 @@ uvicorn main:app --reload --port 8000
 ```plaintext
 Enter `subreddits` & `keywords` → Hit “Search” or “Trending” → browse results
 ```
-
----
-
-## ☁️ 可选：云端部署 / Optional Deploy
-
-- 使用 [Railway](https://railway.app) 或 [Render](https://render.com) 免费托管后端  
-- 把插件 Options 里的 API Base 改为你的云端地址
-
----
-
-## 📸 截图 / Screenshots
-
-（把图片放到 ./assets/，然后在这里插入）
-
-```markdown
-![popup](./assets/popup.png)
-![options](./assets/options.png)
-![trending](./assets/trending.png)
-```
-
 ---
 
 ## 🪪 License
