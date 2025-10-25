@@ -1,0 +1,83 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reddit Radar</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+             margin: 0; padding: 12px; width: 360px; }
+      h1 { font-size: 16px; margin: 0 0 8px; }
+      .row { margin-bottom: 8px; }
+      label { display: block; font-size: 12px; margin-bottom: 4px; color: #333; }
+      input[type=text], textarea, select { width: 100%; box-sizing: border-box; padding: 6px; border: 1px solid #ddd; border-radius: 6px; }
+      textarea { height: 68px; }
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+      button { background: #111827; color: white; border: 0; border-radius: 6px; padding: 8px 10px; cursor: pointer; width: 100%; }
+      button:disabled { opacity: .6; cursor: not-allowed; }
+      .small { font-size: 11px; color: #666; }
+      .result { margin-top: 10px; max-height: 380px; overflow: auto; border-top: 1px solid #eee; padding-top: 8px; }
+      .item { padding: 8px; border: 1px solid #eee; border-radius: 6px; margin-bottom: 8px; }
+      .sub { font-size: 11px; color: #6b7280; }
+      .title { font-size: 13px; font-weight: 600; margin: 2px 0; }
+      .meta { font-size: 11px; color: #374151; }
+      .link { font-size: 11px; }
+      .muted { color: #6b7280; }
+    </style>
+  </head>
+  <body>
+    <h1>Reddit Radar</h1>
+    <div class="row">
+      <label>Subreddits（逗号分隔）</label>
+      <input id="subreddits" type="text" placeholder="ADHD, ADHDWomen, Productivity" />
+    </div>
+    <div class="row">
+      <label>关键词（逗号分隔，支持短语）</label>
+      <textarea id="keywords" placeholder="ADHD, focus, pain point, workflow"></textarea>
+    </div>
+    <div class="grid">
+      <div class="row">
+        <label>From（YYYY-MM-DD）</label>
+        <input id="after" type="text" placeholder="2024-01-01" />
+      </div>
+      <div class="row">
+        <label>To（YYYY-MM-DD）</label>
+        <input id="before" type="text" placeholder="2025-10-25" />
+      </div>
+    </div>
+    <div class="grid">
+      <div class="row">
+        <label>Min Score</label>
+        <input id="min_score" type="text" placeholder="3" />
+      </div>
+      <div class="row">
+        <label>Min Comments</label>
+        <input id="min_comments" type="text" placeholder="1" />
+      </div>
+    </div>
+    <div class="grid">
+      <div class="row">
+        <label>Max Posts</label>
+        <input id="max_posts" type="text" placeholder="100" />
+      </div>
+      <div class="row">
+        <label>Sort</label>
+        <select id="sort_by">
+          <option value="score">score</option>
+          <option value="num_comments">num_comments</option>
+          <option value="created_utc">created_utc</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <button id="btnSearch">搜索帖子（官方 API）</button>
+    </div>
+    <div class="row">
+      <button id="btnTrending">抓取热门（hot / rising / controversial）</button>
+      <div class="small muted">API 地址可在 Options 里更改（默认 http://localhost:8000）</div>
+    </div>
+    <div class="result" id="result"></div>
+    <script src="popup.js"></script>
+  </body>
+</html>

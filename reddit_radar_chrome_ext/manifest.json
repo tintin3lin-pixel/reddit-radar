@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Reddit Radar (Light)",
+  "version": "0.1.0",
+  "description": "Query Reddit trending & keyword posts via your local API server. Front-end shell for the radar system.",
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "http://localhost:8000/*",
+    "https://localhost:8000/*"
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

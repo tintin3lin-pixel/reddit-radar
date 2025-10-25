@@ -1,0 +1,42 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Reddit Radar Options</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+             margin: 0 auto; padding: 16px; max-width: 720px; }
+      label { display: block; margin-bottom: 6px; }
+      input[type=text] { width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 6px; }
+      .row { margin-bottom: 12px; }
+      button { background: #111827; color: white; border: 0; border-radius: 6px; padding: 8px 10px; cursor: pointer; }
+      .muted { color: #6b7280; font-size: 12px; }
+    </style>
+  </head>
+  <body>
+    <h1>设置</h1>
+    <div class="row">
+      <label>API Base URL</label>
+      <input id="apiBase" type="text" placeholder="http://localhost:8000">
+      <div class="muted">默认 http://localhost:8000 ，若你的后端部署在云端，请改成对应地址（必须允许 CORS）。</div>
+    </div>
+    <div class="row">
+      <button id="saveBtn">保存</button>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        chrome.storage.sync.get({ apiBase: "http://localhost:8000" }, (res) => {
+          document.getElementById("apiBase").value = res.apiBase;
+        });
+      });
+      document.getElementById("saveBtn").addEventListener("click", () => {
+        const apiBase = document.getElementById("apiBase").value.trim();
+        chrome.storage.sync.set({ apiBase }, () => {
+          alert("已保存");
+        });
+      });
+    </script>
+  </body>
+</html>
